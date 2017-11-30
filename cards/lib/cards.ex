@@ -7,7 +7,6 @@ defmodule Cards do
   create_deck
 
   ## Example
-
       iex> Cards.create_deck
       ["Ace", "Two", "Three"]
 
@@ -23,7 +22,14 @@ defmodule Cards do
 
   end
 
-  
+  @doc """
+  shuffle a `deck`
+
+  ## Example
+      iex> Cards.shuffle
+      ["Two", "Ace", "Three"]
+
+  """
   def shuffle(deck)  do
     Enum.shuffle(deck)
   end
