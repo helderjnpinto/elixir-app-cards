@@ -8,7 +8,12 @@ defmodule Cards do
 
   ## Example
       iex> Cards.create_deck
-      ["Ace", "Two", "Three"]
+      ["Ace of Spades", "Two of Spades", "Three of Spades",
+            "Four of Spades", "Five of Spades", "Ace of Clubs", "Two of Clubs",
+            "Three of Clubs", "Four of Clubs", "Five of Clubs", "Ace of Hearts",
+            "Two of Hearts", "Three of Hearts", "Four of Hearts",
+            "Five of Hearts", "Ace of Diamonts", "Two of Diamonts",
+            "Three of Diamonts", "Four of Diamonts", "Five of Diamonts"]
 
   """
   def create_deck do
@@ -22,14 +27,6 @@ defmodule Cards do
 
   end
 
-  @doc """
-  shuffle a `deck`
-
-  ## Example
-      iex> Cards.shuffle
-      ["Two", "Ace", "Three"]
-
-  """
   def shuffle(deck)  do
     Enum.shuffle(deck)
   end
@@ -39,22 +36,16 @@ defmodule Cards do
   end
 
 
- @doc """
+  @doc """
     Divides a deck into a hand and the remainder of the deck.
     The `hand_size` arg indicates how many cards should be in the hand
 
- ## Examples
+  ## Examples
+      iex> {hand, _} = Cards.deal(Cards.create_deck(), 3)
+      iex> hand
+      ["Ace of Spades", "Two of Spades", "Three of Spades"]
 
-      iex> {hand, deck } = Cards.deal(deck, 3)
-      iex> {["Ace of Spades", "Two of Spades", "Three of Spades"],
-            ["Four of Spades", "Five of Spades", "Ace of Clubs", "Two of Clubs",
-              "Three of Clubs", "Four of Clubs", "Five of Clubs", "Ace of Hearts",
-              "Two of Hearts", "Three of Hearts", "Four of Hearts", "Five of Hearts",
-              "Ace of Diamonts", "Two of Diamonts", "Three of Diamonts", "Four of Diamonts",
-              "Five of Diamonts"]}
-      iex>
-
- """
+  """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
@@ -77,9 +68,6 @@ defmodule Cards do
        {:error, _ } -> "That file not exist"
     end
   end
-
-
-
 
   def create_hand(hand_size) do
     Cards.create_deck
